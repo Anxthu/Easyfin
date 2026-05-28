@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #0F172A;
+    background-color: #F8FAFC;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    color: #0F172A;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Tech accent line */
+  .accent-line::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 2px;
+    background-color: currentColor;
+    margin-right: 0.75rem;
+    vertical-align: middle;
+  }
+}
