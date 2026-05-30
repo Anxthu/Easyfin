@@ -66,7 +66,7 @@ At Easyfin, we aim to help individuals become financially stable and self-relian
       },
       {
         title: 'Easy Gold Loan',
-        desc: `Easyfin Finance offers secure and transparent gold loan services designed to meet your immediate financial needs with ease and confidence.
+        desc: `Easyfin Finance offers secure and transparent gold loan services designed to meet your immediate financial needs with ease and confidence.  
 
 Interest rates within the limits permitted by regulatory authorities, ensuring fair and responsible lending practices. We maintain complete transparency in valuation, charges, and repayment terms.
 

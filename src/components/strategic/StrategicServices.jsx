@@ -1,64 +1,81 @@
-import { TrendingUp, Briefcase, Target, PiggyBank } from 'lucide-react'
-import { companies } from '../../data/content'
-import SectionHeading from '../shared/SectionHeading'
-import AnimatedSection from '../shared/AnimatedSection'
+import { motion } from 'framer-motion'
+import { Calculator, FileSpreadsheet, SearchCheck, Workflow } from 'lucide-react'
 
-const serviceIcons = [TrendingUp, Briefcase, Target, PiggyBank]
+export default function StrategicServices({ content }) {
+  // Map icons to the 4 services
+  const icons = [
+    <Calculator className="text-violet-400" size={32} strokeWidth={1.5} />,
+    <FileSpreadsheet className="text-indigo-400" size={32} strokeWidth={1.5} />,
+    <SearchCheck className="text-fuchsia-400" size={32} strokeWidth={1.5} />,
+    <Workflow className="text-blue-400" size={32} strokeWidth={1.5} />
+  ]
 
-export default function StrategicServices() {
-  const strategic = companies.find((c) => c.id === 'strategic')
+  // Asymmetrical grid column spans for desktop (out of 12)
+  const colSpans = [
+    "lg:col-span-8", // 1. Tax
+    "lg:col-span-4", // 2. Accounting
+    "lg:col-span-5", // 3. Audits
+    "lg:col-span-7"  // 4. Structuring
+  ]
+
+  // Different background subtle gradients for the bento boxes
+  const bgGradients = [
+    "bg-gradient-to-br from-white/[0.05] to-transparent",
+    "bg-gradient-to-bl from-white/[0.05] to-transparent",
+    "bg-gradient-to-tr from-white/[0.05] to-transparent",
+    "bg-gradient-to-tl from-white/[0.05] to-transparent"
+  ]
 
   return (
-    <>
-      {/* Our Story */}
-      <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <AnimatedSection>
-            <div className="mx-auto max-w-3xl">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">
-                <span className="mr-3 inline-block h-px w-6 bg-indigo-600/40 align-middle" />
-                Our Story
-              </p>
-              <p className="font-display text-2xl leading-relaxed text-text/90 md:text-3xl">
-                <span className="float-left mr-3 mt-1 font-display text-5xl font-bold leading-none text-indigo-600 md:text-6xl">
-                  {strategic.story.charAt(0)}
-                </span>
-                {strategic.story.slice(1)}
-              </p>
-            </div>
-          </AnimatedSection>
+    <section id="services" className="relative py-32 bg-[#0a0a0f] border-t border-white/5 overflow-hidden">
+      <div className="mx-auto max-w-[1280px] px-6 lg:px-12">
+        
+        <div className="flex flex-col mb-16 lg:mb-24">
+          <span className="text-[12px] uppercase tracking-[0.4em] text-violet-500 font-semibold mb-6">
+            Core Capabilities
+          </span>
+          <h2 className="text-[36px] sm:text-[44px] font-normal tracking-tight text-white leading-[1.1] max-w-2xl">
+            Architecting financial resilience and compliance.
+          </h2>
         </div>
-      </section>
 
-      {/* Services */}
-      <section className="bg-surface py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <SectionHeading
-            eyebrow="Services"
-            title="Consulting frameworks that become real execution plans"
-          />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {strategic.services.map((service, i) => {
-              const Icon = serviceIcons[i]
-              return (
-                <AnimatedSection key={service.title} delay={i * 0.1}>
-                  <article className="group rounded-2xl border border-border border-l-[3px] border-l-navy bg-bg p-8 transition-all duration-300 hover:shadow-card">
-                    <div className="mb-5 inline-flex size-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors duration-200 group-hover:bg-indigo-600 group-hover:text-white">
-                      <Icon size={20} strokeWidth={1.5} />
-                    </div>
-                    <h3 className="font-display text-xl font-semibold">
-                      {service.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted">
-                      {service.desc}
-                    </p>
-                  </article>
-                </AnimatedSection>
-              )
-            })}
-          </div>
+        {/* Bento Box Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8">
+          {content.map((service, index) => (
+            <motion.div 
+              key={service.title} 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
+              className={`group relative rounded-[2rem] border border-white/10 ${bgGradients[index]} backdrop-blur-sm p-8 lg:p-12 overflow-hidden flex flex-col h-full min-h-[320px] ${colSpans[index]}`}
+            >
+              {/* Hover highlight effect */}
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                  {icons[index]}
+                </div>
+                
+                <h3 className="text-[24px] font-medium text-white mb-4">
+                  {service.title}
+                </h3>
+                
+                <p className="text-[16px] leading-[1.6] text-slate-400 font-light max-w-[90%]">
+                  {service.desc}
+                </p>
+              </div>
+
+              {/* Decorative abstract mesh in corners */}
+              <div className={`absolute -bottom-24 -right-24 w-64 h-64 rounded-full blur-3xl opacity-20 transition-opacity duration-700 group-hover:opacity-40 ${
+                index % 2 === 0 ? 'bg-violet-600' : 'bg-indigo-600'
+              }`} />
+            </motion.div>
+          ))}
         </div>
-      </section>
-    </>
+
+      </div>
+    </section>
   )
 }

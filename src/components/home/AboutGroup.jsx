@@ -90,7 +90,7 @@ export default function AboutGroup() {
   }, [])
 
   return (
-    <section className="bg-white py-32 lg:py-48" id="about">
+    <section className="bg-white py-32 lg:py-48 rounded-t-[1.5rem] lg:rounded-t-[2rem] relative z-30 -mt-8 shadow-[0_-20px_40px_rgba(0,0,0,0.04)]" id="about">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         
         {/* Apple-Style Scroll Reveal "Who We Are" */}

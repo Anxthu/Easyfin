@@ -61,12 +61,12 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4 rounded-full"
             aria-label="Easyfin Group Home"
           >
-            <div className="flex items-center justify-center size-8 rounded-full border border-slate-200 bg-white transition-transform group-hover:scale-105 group-active:scale-95">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" fill="#0F172A"/>
-              </svg>
-            </div>
-            <span className="font-medium text-[15px] tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+            <img 
+              src="/logo.png" 
+              alt="Easyfin Group" 
+              className="h-10 w-auto object-contain transition-transform group-hover:scale-105 group-active:scale-95" 
+            />
+            <span className="font-medium text-[16px] tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
               Easyfin Group
             </span>
           </Link>

@@ -41,9 +41,9 @@ export default function ThreePillars() {
 
           {/* Scrolling Right Column (Stacked Cards) */}
           <div className="lg:col-span-7 flex flex-col gap-8 lg:gap-12 pt-8 lg:pt-0">
-            {companies.map((company, index) => {
+            {companies.map((company) => {
               const Icon = icons[company.id] || Building2
-              const accent = accentStyles[company.accent] || accentStyles.blue
+              const bgImage = `url('/${company.id}_bg.png')`
               
               return (
                 <motion.div
@@ -52,36 +52,43 @@ export default function ThreePillars() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                  className={`group flex flex-col rounded-[24px] sm:rounded-[32px] bg-white border border-slate-100 p-8 sm:p-10 lg:p-14 shadow-sm transition-all duration-500 ${accent.hover} relative`}
+                  className="group flex flex-col rounded-[24px] sm:rounded-[32px] border border-white/10 p-8 sm:p-10 lg:p-14 transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden min-h-[500px]"
                 >
-                  <div className="flex items-center justify-between mb-8 sm:mb-10">
-                    <div className={`inline-flex items-center justify-center size-12 sm:size-14 rounded-2xl ${accent.bg} ${accent.text}`}>
+                  {/* Cinematic Background Image */}
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+                    style={{ backgroundImage: bgImage }}
+                  />
+                  {/* Dark Gradient Overlay for Readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120]/90 via-[#0B1120]/60 to-[#0B1120]/30 transition-opacity duration-700 group-hover:opacity-80" />
+
+                  <div className="flex items-center justify-between mb-8 sm:mb-10 relative z-10">
+                    <div className="inline-flex items-center justify-center size-12 sm:size-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white">
                       <Icon size={24} aria-hidden="true" strokeWidth={1.5} className="sm:w-7 sm:h-7" />
                     </div>
-                    <span className={`inline-flex items-center rounded-full px-3 sm:px-4 py-1 sm:py-1.5 text-[11px] sm:text-[12px] font-semibold tracking-wide uppercase ${accent.bg} ${accent.text}`}>
+                    <span className="inline-flex items-center rounded-full px-3 sm:px-4 py-1 sm:py-1.5 text-[11px] sm:text-[12px] font-semibold tracking-wide uppercase bg-white/10 backdrop-blur-md border border-white/20 text-white">
                       {company.sector}
                     </span>
                   </div>
 
-                  <h3 className="text-[24px] sm:text-[28px] lg:text-[32px] font-semibold tracking-tight text-[#0B1120] mb-3 sm:mb-4">
+                  <h3 className="text-[24px] sm:text-[28px] lg:text-[32px] font-semibold tracking-tight text-white mb-3 sm:mb-4 relative z-10 mt-auto">
                     {company.name}
                   </h3>
                   
-                  <p className="text-[16px] sm:text-[18px] font-medium leading-[1.6] text-slate-700 mb-3 sm:mb-4">
+                  <p className="text-[16px] sm:text-[18px] font-medium leading-[1.6] text-white/90 mb-3 sm:mb-4 relative z-10">
                     {company.tagline}
                   </p>
                   
-                  <p className="text-[15px] sm:text-[16px] leading-[1.75] text-slate-500 mb-8 sm:mb-10">
+                  <p className="text-[15px] sm:text-[16px] leading-[1.75] text-white/70 mb-8 sm:mb-10 relative z-10">
                     {company.pillarsDesc}
                   </p>
 
-                  <div className="pt-6 sm:pt-8 border-t border-slate-100 mt-auto">
-                    {/* Make the link stretch over the whole card pseudo-element for easier tapping, and add focus styles */}
+                  <div className="pt-6 sm:pt-8 border-t border-white/20 mt-auto relative z-10">
                     <Link
                       to={company.route}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center text-[14px] sm:text-[15px] font-medium ${accent.text} transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:underline active:scale-[0.98] before:absolute before:inset-0`}
+                      className="inline-flex items-center text-[14px] sm:text-[15px] font-medium text-white transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:underline active:scale-[0.98] before:absolute before:inset-0"
                     >
                       Explore {company.name.split(' ')[0]} {company.name.split(' ')[1]}
                       <ArrowRight size={18} aria-hidden="true" className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />

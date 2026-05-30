@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function CTABanner() {
   return (
-    <section className="bg-[#0B1120] py-24 sm:py-32 lg:py-40 relative overflow-hidden px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#0B1120] py-24 sm:py-32 lg:py-40 relative overflow-hidden px-4 sm:px-6 lg:px-8 mx-4 lg:mx-8 mb-8 mt-20 rounded-[2rem] lg:rounded-[2.5rem]">
       {/* Symmetrical, minimal glowing aura */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-blue-600/10 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-emerald-500/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none" />

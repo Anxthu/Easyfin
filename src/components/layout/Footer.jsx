@@ -1,71 +1,88 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
+  const links = [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Three Pillars', path: '/companies' },
+    { name: 'Leadership', path: '/leadership' },
+    { name: 'Contact', path: '/contact' },
+  ]
+
   return (
-    <footer className="relative bg-white text-slate-800 overflow-hidden pt-32 pb-4 border-t border-slate-100">
-      {/* Light Aurora Gradient Blending with White Background */}
-      <div className="absolute top-0 left-0 right-0 h-[300px] w-full overflow-hidden pointer-events-none">
-         <div className="absolute top-[-50px] left-[10%] w-[35%] h-[200px] rounded-full bg-blue-100/50 mix-blend-multiply blur-[80px]" />
-         <div className="absolute top-0 left-[40%] w-[30%] h-[200px] rounded-full bg-emerald-100/50 mix-blend-multiply blur-[80px]" />
-         <div className="absolute top-[-20px] right-[10%] w-[40%] h-[200px] rounded-full bg-indigo-100/50 mix-blend-multiply blur-[80px]" />
-         <div className="absolute bottom-0 inset-x-0 h-[150px] bg-gradient-to-t from-white to-transparent" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 mt-12 z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-24">
+    <footer className="relative bg-[#0B1120] text-white pt-16 lg:pt-20 pb-6 overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] mx-4 lg:mx-8 mb-4 lg:mx-8 mt-20">
+      <div className="mx-auto max-w-[1280px] px-6 lg:px-12 flex flex-col h-full">
+        
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-16 lg:mb-24">
           
-          {/* Logo Left */}
-          <div className="flex items-center gap-3">
-             <div className="flex items-center justify-center size-8 rounded-full border border-slate-200">
-               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                 <path d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" fill="#0F172A"/>
-               </svg>
-             </div>
-             <span className="font-medium text-[15px] tracking-tight text-slate-900">Easyfin Group</span>
+          {/* Left Column */}
+          <div className="flex flex-col items-start justify-between">
+            <div className="max-w-md">
+              <h2 className="text-[28px] sm:text-[36px] leading-[1.1] font-light tracking-tight mb-8">
+                Growth is complicated.<br />
+                Reaching us isn't.<br />
+                <span className="text-white/60">Contact the Easyfin team anytime.</span>
+              </h2>
+              
+              <Link
+                to="/contact"
+                className="inline-flex h-12 items-center justify-center rounded-xl bg-white px-8 text-[14px] font-semibold text-slate-900 transition-all hover:bg-slate-200 hover:scale-105 active:scale-95"
+              >
+                Get in touch
+              </Link>
+            </div>
           </div>
 
-          {/* Links Grid Right */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-10">
-             
-             {/* Column 1 */}
-             <div className="flex flex-col gap-4">
-               <h4 className="text-[11px] font-medium uppercase tracking-widest text-slate-400 mb-2">Company</h4>
-               <Link to="/" className="inline-block w-fit text-[14px] font-medium text-slate-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-sm">Home</Link>
-               <Link to="/about" className="inline-block w-fit text-[14px] font-medium text-slate-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-sm">About Us</Link>
-               <Link to="/leadership" className="inline-block w-fit text-[14px] font-medium text-slate-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-sm">Leadership</Link>
-               <Link to="/contact" className="inline-block w-fit text-[14px] font-medium text-slate-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-sm">Contact</Link>
-             </div>
-
-             {/* Column 2 */}
-             <div className="flex flex-col gap-4">
-               <h4 className="text-[11px] font-medium uppercase tracking-widest text-slate-400 mb-2">Three Pillars</h4>
-               <Link to="/finance" className="inline-block w-fit text-[14px] font-medium text-slate-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-sm">Easyfin Finance</Link>
-               <Link to="/agro" className="inline-block w-fit text-[14px] font-medium text-slate-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-sm">Easyfarm Agro</Link>
-               <Link to="/strategic" className="inline-block w-fit text-[14px] font-medium text-slate-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-sm">Easyfin Strategic</Link>
-             </div>
-
-             {/* Column 3 */}
-             <div className="flex flex-col gap-4">
-               <h4 className="text-[11px] font-medium uppercase tracking-widest text-slate-400 mb-2">Reach Us</h4>
-               <a href="mailto:easyfin.financial@gmail.com" className="inline-block w-fit text-[14px] font-medium text-slate-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-sm">Email Us</a>
-               <a href="tel:+918848071890" className="inline-block w-fit text-[14px] font-medium text-slate-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-sm">Call Us</a>
-             </div>
-
+          {/* Right Column: Massive Links */}
+          <div className="flex flex-col w-full mt-8 lg:mt-0">
+            <div className="border-t border-white/10" />
+            {links.map((link, i) => (
+              <div key={link.name}>
+                <Link
+                  to={link.path}
+                  className="group flex items-center justify-between py-4 lg:py-5 transition-colors hover:bg-white/[0.02] -mx-4 px-4 rounded-2xl"
+                >
+                  <span className="text-[24px] sm:text-[32px] font-light tracking-tight text-white/90 group-hover:text-white transition-colors">
+                    {link.name}
+                  </span>
+                  <ArrowRight className="text-white/0 group-hover:text-white/100 transition-all -translate-x-4 group-hover:translate-x-0" size={24} strokeWidth={1.5} />
+                </Link>
+                <div className="border-t border-white/10" />
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Global Footer Bottom Layer */}
-        <div className="flex flex-col md:flex-row justify-between items-center z-10 relative border-t border-slate-100 pt-8">
-           <p className="text-[12px] font-medium text-slate-400 tracking-wide order-last md:order-first mt-8 md:mt-0">
-             &copy; {new Date().getFullYear()} Easyfin Group of Companies. All rights reserved.
-           </p>
+        {/* Bottom Section */}
+        <div className="flex flex-col lg:flex-row items-center justify-between mt-auto gap-8 lg:gap-0">
+          
+          {/* Massive Logo Bottom Left (Inverted to White) */}
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+            <img 
+              src="/logo.png" 
+              alt="Easyfin Group" 
+              className="h-16 sm:h-20 lg:h-24 w-auto object-contain [filter:brightness(0)_invert(1)] opacity-90 -translate-y-6 lg:-translate-y-10"
+            />
+          </div>
 
-           <div className="w-full md:w-auto flex-1 overflow-hidden flex justify-end">
-              <span className="text-[12vw] md:text-[min(120px,10vw)] font-normal tracking-[-0.05em] leading-[0.8] text-slate-100 uppercase select-none cursor-default" aria-hidden="true">
-                Easyfin
-              </span>
-           </div>
+          {/* Copyright and Socials */}
+          <div className="w-full lg:w-1/2 flex flex-col sm:flex-row items-center justify-between lg:justify-end gap-6 text-[14px] text-white/50">
+            <div className="flex items-center gap-6 font-medium uppercase tracking-wider text-[12px]">
+              <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+              <a href="#" className="hover:text-white transition-colors">Twitter</a>
+              <a href="#" className="hover:text-white transition-colors">Instagram</a>
+            </div>
+            
+            <div className="flex items-center gap-4 text-center sm:text-right">
+              <span>© {currentYear} Easyfin Group</span>
+            </div>
+          </div>
+
         </div>
+
       </div>
     </footer>
   )

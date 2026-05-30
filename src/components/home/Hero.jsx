@@ -89,7 +89,7 @@ export default function Hero() {
       {/* Floating Bottom Elements - Changed from absolute to flex flow to prevent collisions on short screens */}
       <div 
         ref={bottomElementsRef}
-        className="relative z-20 w-full px-4 sm:px-8 lg:px-12 pb-4 sm:pb-6 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-0 mt-auto"
+        className="relative z-20 w-full px-4 sm:px-8 lg:px-12 pb-16 sm:pb-24 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-0 mt-auto"
       >
         {/* Micro-typography Left */}
         <div className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-[#0B1120] opacity-80 hidden sm:block flex-1">
